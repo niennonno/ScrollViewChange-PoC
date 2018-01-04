@@ -68,12 +68,4 @@ extension ViewController: UIScrollViewDelegate {
             aView.setNeedsUpdateConstraints()
         }
     }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       
-        UIView.animate(withDuration: 0.6) {
-            self.aView.layoutIfNeeded()
-
-        }
-    }
 }
