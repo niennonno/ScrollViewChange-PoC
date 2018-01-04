@@ -32,9 +32,6 @@ class ViewController: UIViewController {
         heightConstraint = NSLayoutConstraint(item: aView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
         
         self.aView.addConstraint(heightConstraint)
-        
-//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": aView]))
-        
     }
 }
 
@@ -66,7 +63,7 @@ extension ViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.y >= 0 && scrollView.contentOffset.y <= 160 {
             heightConstraint.constant = 200 - scrollView.contentOffset.y
             aView.setNeedsUpdateConstraints()
-        } else if scrollView.contentOffset.y > 16- {
+        } else if scrollView.contentOffset.y > 16 {
             heightConstraint.constant = 40
             aView.setNeedsUpdateConstraints()
         }
@@ -79,17 +76,4 @@ extension ViewController: UIScrollViewDelegate {
 
         }
     }
-    
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print(scrollView.contentOffset.y)
-//        if scrollView.contentOffset.y >= 10 {
-//            heightConstraint.constant = 40
-//        } else {
-//            heightConstraint.constant = 200
-//        }
-//
-//        UIView.animate(withDuration: 1, animations: {
-//            self.view.setNeedsLayout()
-//        })
-//    }
 }
