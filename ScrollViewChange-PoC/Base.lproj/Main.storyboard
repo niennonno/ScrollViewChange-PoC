@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gcK-2H-Ffj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gcK-2H-Ffj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -44,11 +44,12 @@
                         <constraints>
                             <constraint firstItem="gcK-2H-Ffj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ab4-ti-aS2"/>
                             <constraint firstItem="gcK-2H-Ffj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Q8A-3n-QWI"/>
-                            <constraint firstItem="gcK-2H-Ffj" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="bm2-UL-3bD"/>
+                            <constraint firstAttribute="bottom" secondItem="gcK-2H-Ffj" secondAttribute="bottom" id="bm2-UL-3bD"/>
                             <constraint firstItem="gcK-2H-Ffj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="qdg-Bo-bhj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableBottomConstraint" destination="bm2-UL-3bD" id="9Xs-g3-6v7"/>
                         <outlet property="tableView" destination="gcK-2H-Ffj" id="3vD-3z-TNy"/>
                     </connections>
                 </viewController>

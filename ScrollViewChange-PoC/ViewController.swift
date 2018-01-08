@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
     var heightConstraint: NSLayoutConstraint!
-    
+
     let aView = Bundle.main.loadNibNamed("TestingView", owner: self, options: nil)?.first as! TestingView
     
     override func viewDidLoad() {
@@ -30,7 +31,8 @@ class ViewController: UIViewController {
         
         // height constraint
         heightConstraint = NSLayoutConstraint(item: aView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
-        
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        tableBottomConstraint.constant = 200
         self.aView.addConstraint(heightConstraint)
     }
 }
@@ -52,6 +54,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = "\(indexPath.row)"
+        cell.transform = CGAffineTransform(scaleX: 1, y: -1)
         return cell
     }
 }
@@ -62,8 +65,10 @@ extension ViewController: UIScrollViewDelegate {
         print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y >= 0 && scrollView.contentOffset.y <= 160 {
             heightConstraint.constant = 200 - scrollView.contentOffset.y
+            tableBottomConstraint.constant = 200 - scrollView.contentOffset.y
             aView.setNeedsUpdateConstraints()
-        } else if scrollView.contentOffset.y > 16 {
+        } else if scrollView.contentOffset.y > 160 {
+            tableBottomConstraint.constant = 40
             heightConstraint.constant = 40
             aView.setNeedsUpdateConstraints()
         }
